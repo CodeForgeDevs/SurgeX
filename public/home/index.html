@@ -27,7 +27,7 @@
   <header>
     <div style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
       <span id="welcome-message" style="cursor: pointer; font-size: 30px; margin-bottom: 10px;" onclick="editUsername()">
-        Welcome, <span id="username" contenteditable="true" style="border: 1px dashed transparent; padding: 2px;">User</span>
+        Welcome, <span id="username" contenteditable="true" style="border: 1px dashed transparent; padding: 2px;">User</span> to
       </span>
       <div style="display: flex; align-items: center;">
         <img src="logo.png" alt="SurgeX Logo" style="width: 100px; height: auto; margin-right: 10px;" />
@@ -37,13 +37,20 @@
     <p style="text-align: center; margin-top: 10px;">Faster, Better, The FUTURE</p>
   </header>
   
-  
   <script>
     // Function to edit username
     function editUsername() {
       const usernameElement = document.getElementById("username");
       usernameElement.focus();
       usernameElement.style.border = "1px dashed #aaa";
+  
+      // Enforce character limit
+      usernameElement.addEventListener("input", () => {
+        if (usernameElement.textContent.length > 20) {
+          usernameElement.textContent = usernameElement.textContent.substring(0, 20);
+          alert("Username cannot exceed 20 characters.");
+        }
+      });
   
       // Save when the Enter key is pressed
       usernameElement.addEventListener("keydown", (event) => {
@@ -59,6 +66,7 @@
       });
     }
   </script>
+  
   
   
   <script>
