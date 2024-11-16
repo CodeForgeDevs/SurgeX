@@ -26,7 +26,7 @@
 
   <header>
     <h1 style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-      <span id="welcome-message" style="cursor: pointer;" onclick="editUsername()">
+      <span id="welcome-message" style="cursor: pointer; font-size: 14px;" onclick="editUsername()">
         Welcome, <span id="username" contenteditable="true" style="border: 1px dashed transparent; padding: 2px;">User</span>
       </span>
       <div style="display: flex; align-items: center; margin-top: 10px;">
@@ -36,6 +36,29 @@
     </h1>
     <p>Faster, Better, The FUTURE</p>
   </header>
+  
+  <script>
+    // Function to edit username
+    function editUsername() {
+      const usernameElement = document.getElementById("username");
+      usernameElement.focus();
+      usernameElement.style.border = "1px dashed #aaa";
+  
+      // Save when the Enter key is pressed
+      usernameElement.addEventListener("keydown", (event) => {
+        if (event.key === "Enter") {
+          event.preventDefault(); // Prevent a new line
+          usernameElement.blur(); // Save and exit edit mode
+        }
+      });
+  
+      // Remove the border on blur (save the change)
+      usernameElement.addEventListener("blur", () => {
+        usernameElement.style.border = "1px dashed transparent";
+      });
+    }
+  </script>
+  
   
   <script>
     // Function to edit username
