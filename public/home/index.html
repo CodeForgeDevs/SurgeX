@@ -25,6 +25,18 @@
     text-decoration: underline;
     cursor: pointer;
   }
+
+  #usernameInput {
+    display: none;
+    border: none;
+    border-bottom: 1px solid #007bff;
+    font-size: 1rem;
+    color: #007bff;
+    background: transparent;
+    outline: none;
+    width: auto;
+    text-align: center;
+  }
 </style>
 
 <body>
@@ -32,7 +44,9 @@
 
   <header style="text-align: center;">
     <p>
-      Welcome, <span id="username" onclick="changeUsername()">User</span> to...
+      Welcome, <span id="username" onclick="editUsername()">User</span>
+      <input id="usernameInput" type="text" onblur="saveUsername()" onkeydown="checkEnter(event)" />
+      to...
     </p>
     <h1 style="display: flex; align-items: center; justify-content: center;">
       <img src="logo.png" alt="SurgeX Logo" style="width: 100px; height: auto; margin-right: 10px;" />
@@ -47,11 +61,28 @@
   <script src="script.js"></script>
   <script src="/assets/themes.js" type="module"></script>
   <script>
-    function changeUsername() {
+    function editUsername() {
       const usernameSpan = document.getElementById('username');
-      const newUsername = prompt('Enter your name:');
-      if (newUsername) {
-        usernameSpan.textContent = newUsername;
+      const usernameInput = document.getElementById('usernameInput');
+      usernameInput.value = usernameSpan.textContent;
+      usernameSpan.style.display = 'none';
+      usernameInput.style.display = 'inline-block';
+      usernameInput.focus();
+    }
+
+    function saveUsername() {
+      const usernameSpan = document.getElementById('username');
+      const usernameInput = document.getElementById('usernameInput');
+      if (usernameInput.value.trim()) {
+        usernameSpan.textContent = usernameInput.value.trim();
+      }
+      usernameSpan.style.display = 'inline';
+      usernameInput.style.display = 'none';
+    }
+
+    function checkEnter(event) {
+      if (event.key === 'Enter') {
+        saveUsername();
       }
     }
 
