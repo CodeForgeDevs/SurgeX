@@ -20,6 +20,11 @@
     background-size: 100%;
   }
 
+  #welcomeMessage {
+    margin-bottom: 20px; /* Add space below the welcome message */
+    font-size: 1.2rem;
+  }
+
   #username {
     color: #007bff;
     text-decoration: underline;
@@ -37,17 +42,21 @@
     width: auto;
     text-align: center;
   }
+
+  header {
+    text-align: center;
+  }
 </style>
 
 <body>
   <div class="blob-bg"></div>
 
-  <header style="text-align: center;">
-    <p>
+  <header>
+    <div id="welcomeMessage">
       Welcome, <span id="username" onclick="editUsername()">User</span>
       <input id="usernameInput" type="text" onblur="saveUsername()" onkeydown="checkEnter(event)" />
       to...
-    </p>
+    </div>
     <h1 style="display: flex; align-items: center; justify-content: center;">
       <img src="logo.png" alt="SurgeX Logo" style="width: 100px; height: auto; margin-right: 10px;" />
       SurgeX
