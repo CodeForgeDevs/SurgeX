@@ -19,21 +19,11 @@
     background-image: url(https://wallpapercat.com/w/full/9/e/1/798566-3840x2160-desktop-4k-abstract-shape-wallpaper.jpg);
     background-size: 100%;
   }
-  .editable {
+
+  #username {
+    color: #007bff;
+    text-decoration: underline;
     cursor: pointer;
-    color: #fff;
-    font-weight: bold;
-    margin: 10px 0;
-  }
-  .editable input {
-    border: none;
-    background: transparent;
-    color: white;
-    font-size: inherit;
-    font-family: inherit;
-    text-align: center;
-    outline: none;
-    width: auto;
   }
 </style>
 
@@ -41,43 +31,34 @@
   <div class="blob-bg"></div>
 
   <header style="text-align: center;">
-    <p class="editable" id="welcomeMessage">Welcome [user]</p>
+    <p>
+      Welcome, <span id="username" onclick="changeUsername()">User</span> to...
+    </p>
     <h1 style="display: flex; align-items: center; justify-content: center;">
       <img src="logo.png" alt="SurgeX Logo" style="width: 100px; height: auto; margin-right: 10px;" />
       SurgeX
     </h1>
-    <p class="editable" id="welcomeMessage2">Welcome [user]</p>
   </header>
 
   <div class="buttons">
     <a class="getStarted" id="getStarted">Get Started <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 
+  <script src="script.js"></script>
+  <script src="/assets/themes.js" type="module"></script>
   <script>
-    function makeEditable(element) {
-      const originalText = element.textContent;
-      const input = document.createElement('input');
-      input.type = 'text';
-      input.value = originalText;
-      input.addEventListener('blur', () => saveEdit(input, element));
-      input.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-          saveEdit(input, element);
-        }
-      });
-      element.textContent = '';
-      element.appendChild(input);
-      input.focus();
+    function changeUsername() {
+      const usernameSpan = document.getElementById('username');
+      const newUsername = prompt('Enter your name:');
+      if (newUsername) {
+        usernameSpan.textContent = newUsername;
+      }
     }
 
-    function saveEdit(input, element) {
-      const newText = input.value.trim() || '[user]';
-      element.textContent = `Welcome ${newText}`;
-    }
-
-    document.querySelectorAll('.editable').forEach((element) => {
-      element.addEventListener('click', () => makeEditable(element));
-    });
+    onload = () => {
+      parent.updateOmni();
+      parent.setTab();
+    };
   </script>
 </body>
 
