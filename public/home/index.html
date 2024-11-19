@@ -10,65 +10,77 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="/icons/pages/home.png" />
   <title>Home</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-NCTSG4T1B6"></script>
-  <script>window.dataLayer = window.dataLayer || []; function gtag() { dataLayer.push(arguments); } gtag('js', new Date()); gtag('config', 'G-NCTSG4T1B6');</script>
+  <style>
+    body {
+      background-image: url(https://wallpapercat.com/w/full/9/e/1/798566-3840x2160-desktop-4k-abstract-shape-wallpaper.jpg);
+      background-size: cover;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    #container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px; /* Space between welcome message and SurgeX */
+    }
+
+    #welcomeMessage {
+      font-size: 1.5rem;
+    }
+
+    #username {
+      color: #007bff;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    #usernameInput {
+      display: none;
+      border: none;
+      border-bottom: 1px solid #007bff;
+      font-size: 1rem;
+      color: #007bff;
+      background: transparent;
+      outline: none;
+      width: auto;
+      text-align: center;
+    }
+
+    h1 {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      margin: 0;
+    }
+
+    h1 img {
+      width: 100px;
+      height: auto;
+      margin-right: 10px;
+    }
+  </style>
 </head>
-<style>
-  body {
-    background-image: url(https://wallpapercat.com/w/full/9/e/1/798566-3840x2160-desktop-4k-abstract-shape-wallpaper.jpg);
-    background-size: 100%;
-  }
-
-  #welcomeMessage {
-    margin-bottom: 1px; /* Add space below the welcome message */
-    font-size: 2rem;
-  }
-
-  #username {
-    color: #007bff;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  #usernameInput {
-    display: none;
-    border: none;
-    border-bottom: 1px solid #007bff;
-    font-size: 2rem;
-    color: #007bff;
-    background: transparent;
-    outline: none;
-    width: auto;
-    text-align: center;
-  }
-
-  header {
-    text-align: center;
-  }
-</style>
 
 <body>
-  <div class="blob-bg"></div>
-
-  <header>
+  <div id="container">
     <div id="welcomeMessage">
       Welcome, <span id="username" onclick="editUsername()">User</span>
       <input id="usernameInput" type="text" onblur="saveUsername()" onkeydown="checkEnter(event)" />
-      to
+      to...
     </div>
-    <h1 style="display: flex; align-items: center; justify-content: center;">
-      <img src="logo.png" alt="SurgeX Logo" style="width: 100px; height: auto; margin-right: 10px;" />
-      Trident
+    <h1>
+      <img src="logo.png" alt="SurgeX Logo" />
+      SurgeX
     </h1>
-  </header>
-
-  <div class="buttons">
-    <a class="getStarted" id="getStarted">Get Started <i class="fa-solid fa-arrow-right"></i></a>
   </div>
 
-  <script src="script.js"></script>
-  <script src="/assets/themes.js" type="module"></script>
   <script>
     function editUsername() {
       const usernameSpan = document.getElementById('username');
@@ -94,11 +106,6 @@
         saveUsername();
       }
     }
-
-    onload = () => {
-      parent.updateOmni();
-      parent.setTab();
-    };
   </script>
 </body>
 
