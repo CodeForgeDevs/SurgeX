@@ -24,32 +24,13 @@
 <body>
   <div class="blob-bg"></div>
 
-  <header style="text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;">
-    <div style="margin-bottom: 10px;">
-      <span id="welcome-message" style="cursor: pointer; font-size: 18px;" onclick="editUsername()">
-        Welcome, <span id="username" contenteditable="true" style="border: 1px dashed transparent; padding: 2px;">User</span>
-      </span>
-    </div>
-    <div style="display: flex; align-items: center;">
+  <header>
+    <h1 style="text-align: center; display: flex; align-items: center; justify-content: center;">
       <img src="logo.png" alt="SurgeX Logo" style="width: 100px; height: auto; margin-right: 10px;" />
-      <h1 style="margin: 0; font-size: 24px;">SurgeX</h1>
-    </div>
-    <p style="margin-top: 5px;">Faster, Better, The FUTURE</p>
-  </header>
-  
-  
-  <script>
-    // Function to edit username
-    function editUsername() {
-      const usernameElement = document.getElementById("username");
-      usernameElement.focus();
-      usernameElement.style.border = "1px dashed #aaa";
-      usernameElement.addEventListener("blur", () => {
-        usernameElement.style.border = "1px dashed transparent";
-      });
-    }
-  </script>
-  
+      SurgeX
+    </h1>
+    <p>Faster, Better, The FUTURE</p>
+  </header>  
   
   <div class="buttons">
     <a class="getStarted" id="getStarted">Get Started <i class="fa-solid fa-arrow-right"></i></a>
