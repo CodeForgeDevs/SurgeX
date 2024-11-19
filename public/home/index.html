@@ -28,11 +28,11 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 10px; /* Space between welcome message and SurgeX */
+      gap: 5px; /* Space between welcome message and SurgeX */
     }
   
     #welcomeMessage {
-      font-size: 4rem; /* Triple the original size */
+      font-size: 3rem; /* Triple the original size */
     }
   
     #username {
@@ -45,7 +45,7 @@
       display: none;
       border: none;
       border-bottom: 1px solid #007bff;
-      font-size: 4rem; /* Matches the new welcome message size */
+      font-size: 3rem; /* Matches the new welcome message size */
       color: #007bff;
       background: transparent;
       outline: none;
@@ -56,12 +56,12 @@
     h1 {
       display: flex;
       align-items: center;
-      font-size: 8rem; /* Triple the original size */
+      font-size: 6rem; /* Triple the original size */
       margin: 0;
     }
   
     h1 img {
-      width: 200px; /* Slightly increase logo size to balance the larger text */
+      width: 150px; /* Slightly increase logo size to balance the larger text */
       height: auto;
       margin-right: 10px;
     }
@@ -74,11 +74,11 @@
     <div id="welcomeMessage">
       Welcome, <span id="username" onclick="editUsername()">User</span>
       <input id="usernameInput" type="text" onblur="saveUsername()" onkeydown="checkEnter(event)" />
-      to...
+      to
     </div>
     <h1>
       <img src="logo.png" alt="SurgeX Logo" />
-      TridentX
+      Trident
     </h1>
   </div>
 
