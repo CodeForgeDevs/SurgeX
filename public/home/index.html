@@ -133,7 +133,7 @@
     </div>
     <h1>
       <img src="logo.png" alt="SurgeX Logo" />
-      Trident
+      TridentX
     </h1>
   </div>
 
@@ -179,6 +179,32 @@
 
     // Create particles every 100ms
     setInterval(createParticle, 100);
+
+    // Functions to edit username
+    function editUsername() {
+      const usernameSpan = document.getElementById('username');
+      const usernameInput = document.getElementById('usernameInput');
+      usernameInput.value = usernameSpan.textContent;
+      usernameSpan.style.display = 'none';
+      usernameInput.style.display = 'inline-block';
+      usernameInput.focus();
+    }
+
+    function saveUsername() {
+      const usernameSpan = document.getElementById('username');
+      const usernameInput = document.getElementById('usernameInput');
+      if (usernameInput.value.trim()) {
+        usernameSpan.textContent = usernameInput.value.trim();
+      }
+      usernameSpan.style.display = 'inline';
+      usernameInput.style.display = 'none';
+    }
+
+    function checkEnter(event) {
+      if (event.key === 'Enter') {
+        saveUsername();
+      }
+    }
   </script>
 </body>
 
