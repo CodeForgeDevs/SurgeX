@@ -144,6 +144,36 @@
 
     // Create particles every 100ms
     setInterval(createParticle, 100);
+
+    // Function to edit the username
+    function editUsername() {
+      const usernameElement = document.getElementById("username");
+      const usernameInput = document.getElementById("usernameInput");
+
+      // Hide the username and show the input field
+      usernameElement.style.display = "none";
+      usernameInput.style.display = "inline-block";
+      usernameInput.value = usernameElement.innerText; // Set the current username as default in input
+      usernameInput.focus();
+    }
+
+    // Function to save the username
+    function saveUsername() {
+      const usernameInput = document.getElementById("usernameInput");
+      const usernameElement = document.getElementById("username");
+
+      // Save the new username and update the display
+      usernameElement.innerText = usernameInput.value.trim() || "User"; // Default to "User" if empty
+      usernameInput.style.display = "none";
+      usernameElement.style.display = "inline-block";
+    }
+
+    // Function to check if the Enter key is pressed to save the username
+    function checkEnter(event) {
+      if (event.key === "Enter") {
+        saveUsername();
+      }
+    }
   </script>
 </body>
 
