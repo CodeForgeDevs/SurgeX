@@ -12,35 +12,39 @@
   <title>Home</title>
   <style>
     body {
-    background-image: url('bg.jpg'); /* Replace with your image file name */
-    background-size: cover;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+      background-image: url('bg.jpg'); /* Replace with your image file name */
+      background-size: cover;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       height: 100vh;
       font-family: 'Poppins', sans-serif;
       color: #ffffff;
       text-align: center;
+      position: relative;
+      overflow: hidden; /* Prevent particles from overflowing */
     }
-  
+
     #container {
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1px; /* Space between welcome message and SurgeX */
+      position: relative;
+      z-index: 2; /* Keep the content on top */
     }
-  
+
     #welcomeMessage {
       font-size: 2.25rem; /* Triple the original size */
     }
-  
+
     #username {
       color: #007bff;
       text-decoration: underline;
       cursor: pointer;
     }
-  
+
     #usernameInput {
       display: none;
       border: none;
@@ -52,24 +56,48 @@
       width: auto;
       text-align: center;
     }
-  
+
     h1 {
       display: flex;
       align-items: center;
       font-size: 7rem; /* Triple the original size */
       margin: 0;
     }
-  
+
     h1 img {
       width: 150px; /* Slightly increase logo size to balance the larger text */
       height: auto;
       margin-right: 10px;
     }
+
+    /* Particle effect styles */
+    .particle {
+      position: absolute;
+      bottom: -20px;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      animation: moveUp 5s infinite;
+    }
+
+    @keyframes moveUp {
+      0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: translateY(-100vh) scale(0.5);
+      }
+    }
   </style>
-  
 </head>
 
 <body>
+  <!-- Particles Container -->
+  <div id="particlesContainer"></div>
+
   <div id="container">
     <div id="welcomeMessage">
       Welcome, <span id="username" onclick="editUsername()">User</span>
@@ -81,6 +109,7 @@
       Trident
     </h1>
   </div>
+
   <div class="buttons">
     <a class="getStarted" id="getStarted">Get Started <i class="fa-solid fa-arrow-right"></i></a>
   </div>
@@ -92,35 +121,29 @@
       parent.updateOmni();
       parent.setTab();
     };
-  </script>
-</body>
-  
 
-  <script>
-    function editUsername() {
-      const usernameSpan = document.getElementById('username');
-      const usernameInput = document.getElementById('usernameInput');
-      usernameInput.value = usernameSpan.textContent;
-      usernameSpan.style.display = 'none';
-      usernameInput.style.display = 'inline-block';
-      usernameInput.focus();
+    // Particle generation script
+    function createParticle() {
+      const particlesContainer = document.getElementById("particlesContainer");
+      const particle = document.createElement("div");
+      particle.classList.add("particle");
+      
+      // Randomize size and initial position
+      const size = Math.random() * 5 + 5;  // Particle size between 5px and 10px
+      particle.style.width = `${size}px`;
+      particle.style.height = `${size}px`;
+      particle.style.left = `${Math.random() * 100}%`;
+
+      particlesContainer.appendChild(particle);
+
+      // Remove particle after animation
+      setTimeout(() => {
+        particlesContainer.removeChild(particle);
+      }, 5000);
     }
 
-    function saveUsername() {
-      const usernameSpan = document.getElementById('username');
-      const usernameInput = document.getElementById('usernameInput');
-      if (usernameInput.value.trim()) {
-        usernameSpan.textContent = usernameInput.value.trim();
-      }
-      usernameSpan.style.display = 'inline';
-      usernameInput.style.display = 'none';
-    }
-
-    function checkEnter(event) {
-      if (event.key === 'Enter') {
-        saveUsername();
-      }
-    }
+    // Create particles every 100ms
+    setInterval(createParticle, 100);
   </script>
 </body>
 
