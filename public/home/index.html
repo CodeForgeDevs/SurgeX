@@ -75,9 +75,9 @@
       position: absolute;
       bottom: -20px;
       animation: moveUp 5s infinite;
-      background-color: rgba(255, 255, 255, 0.8);
     }
 
+    /* Keyframes for particle animation */
     @keyframes moveUp {
       0% {
         opacity: 1;
@@ -103,7 +103,7 @@
     </div>
     <h1>
       <img src="logo.png" alt="SurgeX Logo" />
-      Trident v2.0.1
+      Trident
     </h1>
   </div>
 
@@ -124,40 +124,44 @@
       const particlesContainer = document.getElementById("particlesContainer");
       const particle = document.createElement("div");
 
-      // Randomly choose a shape: circle, square, or triangle
-      const shapeType = Math.floor(Math.random() * 3); // 0: circle, 1: square, 2: triangle
+      // Randomly choose a shape: 0 for circle, 1 for square, 2 for triangle
+      const shapeType = Math.floor(Math.random() * 3); // Random number between 0 and 2
 
       // Apply styles based on the chosen shape
       if (shapeType === 0) {
-        particle.style.borderRadius = "50%"; // Circle
+        // Circle
+        particle.style.borderRadius = "50%";
+        particle.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
       } else if (shapeType === 1) {
-        particle.style.borderRadius = "0"; // Square
+        // Square
+        particle.style.borderRadius = "0"; // No border radius for square
+        particle.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
       } else {
+        // Triangle
         particle.style.width = "0";
         particle.style.height = "0";
         particle.style.borderLeft = "5px solid transparent";
         particle.style.borderRight = "5px solid transparent";
-        particle.style.borderBottom = "10px solid rgba(255, 255, 255, 0.8)"; // Triangle
+        particle.style.borderBottom = "10px solid rgba(255, 255, 255, 0.8)"; // Bottom border creates the triangle
       }
 
-      // Randomize size and initial position
-      const size = Math.random() * 5 + 5;  // Particle size between 5px and 10px
+      // Randomize size between 5px and 10px
+      const size = Math.random() * 5 + 5;
       particle.style.width = `${size}px`;
       particle.style.height = `${size}px`;
-      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.left = `${Math.random() * 100}%`; // Random horizontal position
 
       // Common styles for all particles
       particle.style.position = "absolute";
-      particle.style.bottom = "-20px";
-      particle.style.animation = "moveUp 5s infinite";
-      particle.style.backgroundColor = "rgba(255, 255, 255, 0.8)";
+      particle.style.bottom = "-20px"; // Start below the view
+      particle.style.animation = "moveUp 5s infinite"; // Apply the move-up animation
 
       particlesContainer.appendChild(particle);
 
-      // Remove particle after animation
+      // Remove particle after animation ends
       setTimeout(() => {
         particlesContainer.removeChild(particle);
-      }, 5000);
+      }, 5000); // Particle disappears after 5 seconds
     }
 
     // Create particles every 100ms
