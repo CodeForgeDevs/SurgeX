@@ -84,11 +84,15 @@
       align-items: center;
       z-index: 3; /* Keep it on top of everything */
       color: #ffffff;
-      transition: opacity 1s ease-out;
     }
 
     #lockIcon {
       font-size: 5rem;
+      margin-bottom: 20px;
+    }
+
+    #heading {
+      font-size: 3rem;
       margin-bottom: 20px;
     }
 
@@ -165,6 +169,7 @@
   <!-- Lock Screen -->
   <div id="lockScreen">
     <div id="lockIcon"><i class="fa fa-lock"></i></div>
+    <div id="heading">Website Locked</div>
     <div id="passwordLabel">Enter password to proceed:</div>
     <input id="passwordInput" type="password" placeholder="Enter Password" />
     <button id="submitButton" onclick="checkPassword()">Submit</button>
@@ -273,5 +278,4 @@
     function checkPassword() {
       const passwordInput = document.getElementById("passwordInput");
       const lockScreen = document.getElementById("lockScreen");
-
 [_{{{CITATION{{{_1{](https://github.com/dnwandana/wandana.me/tree/56f4e344fc790f71abdbf85c6a0db92d05b8a14e/content%2F2020%2F12%2Fbasic-markdown-content-parsed-in-html.md)[_{{{CITATION{{{_2{](https://github.com/priyalvaz/movieticketbooking/tree/9cc3561ba02a62a3ef4906e2d09158f0217c875d/book%2Ftime.php)[_{{{CITATION{{{_3{](https://github.com/elFani/scully-blog-v01/tree/3e9d3de3cfa0a6ab3d9f82773d2ef28cdd05663c/blog%2Fadd-a-donation-button-and-start-accepting-money-on-jamstack-sites.md)
