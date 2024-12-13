@@ -91,6 +91,11 @@
       margin-bottom: 20px;
     }
 
+    #passwordLabel {
+      margin-bottom: 10px;
+      font-size: 1.5rem;
+    }
+
     #passwordInput {
       padding: 10px;
       font-size: 1.5rem;
@@ -146,9 +151,10 @@
   <!-- Lock Screen -->
   <div id="lockScreen">
     <div id="lockIcon"><i class="fa fa-lock"></i></div>
+    <div id="passwordLabel">Enter password to proceed:</div>
     <input id="passwordInput" type="password" placeholder="Enter Password" />
     <button id="submitButton" onclick="checkPassword()">Submit</button>
-    <div id="errorMessage">INCORRECT PWD</div>
+    <div id="errorMessage">INCORRECT PASSWORD</div>
   </div>
 
   <div id="container">
